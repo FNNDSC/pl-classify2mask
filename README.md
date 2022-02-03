@@ -1,56 +1,48 @@
-# _ChRIS_ ds Plugin Template
+# pl-nums2mask
 
-<!--
-[![Version](https://img.shields.io/docker/v/fnndsc/pl-appname?sort=semver)](https://hub.docker.com/r/fnndsc/pl-appname)
-[![MIT License](https://img.shields.io/github/license/fnndsc/pl-appname)](https://github.com/FNNDSC/pl-appname/blob/main/LICENSE)
-[![Build](https://github.com/FNNDSC/pl-appname/actions/workflows/ci.yml/badge.svg)](https://github.com/FNNDSC/pl-appname/actions)
--->
+[![Version](https://img.shields.io/docker/v/fnndsc/pl-nums2mask?sort=semver)](https://hub.docker.com/r/fnndsc/pl-nums2mask)
+[![MIT License](https://img.shields.io/github/license/fnndsc/pl-nums2mask)](https://github.com/FNNDSC/pl-nums2mask/blob/main/LICENSE)
+[![Build](https://github.com/FNNDSC/pl-nums2mask/actions/workflows/ci.yml/badge.svg)](https://github.com/FNNDSC/pl-nums2mask/actions)
 
-
-This is a minimal template repository for _ChRIS_ _ds_ plugin applications.
-For a more comprehensive boilerplate, use
-
-https://github.com/fnndsc/cookiecutter-chrisapp
-
-## Abstract
-
-PROGRAMNAME is a [_ChRIS_](https://chrisproject.org/)
-_ds_ plugin which takes in ...  as input files and
-creates ... as output files.
+Obtain a mask from selected labels of a segmentation volume.
 
 ## Usage
 
 ```shell
-singularity exec docker://fnndsc/pl-appname commandname [--args values...] input/ output/
+singularity exec docker://fnndsc/pl-nums2mask nums2mask [-p PATTERN] [-w --values] input/ output/
 ```
+
+`input/` is a directory which contains segmentations as MINC files.
 
 ## Examples
 
+For example, you have a segmentation volume where gray matter (GM) is indicated by
+intensity values of 40 and white matter (WM) is indicated by 160. To create a brain mask,
+you would need to select the area indicated by the values 40 and 160.
+
 ```shell
-mkdir incoming/ outgoing/
-mv some.dat other.dat incoming/
-singularity exec docker://fndsc/pl-appname:latest commandname [--args] incoming/ outgoing/
+singularity exec docker://fndsc/pl-nums2mask nums2mask -w 40,160 input/ output/
 ```
 
 ## Development
 
-### Building
+### Build
 
 ```shell
-docker build -t localhost/fnndsc/pl-appname .
+docker build -t localhost/fnndsc/pl-nums2mask .
 ```
 
 ### Get JSON Representation
 
 ```shell
-docker run --rm localhost/fnndsc/pl-appname chris_plugin_info > MyProgram.json
+docker run --rm localhost/fnndsc/pl-nums2mask chris_plugin_info > nums2mask.json
 ```
 
 ### Local Test Run
 
 ```shell
 docker run --rm -it --userns=host -u $(id -u):$(id -g) \
-    -v $PWD/app.py:/usr/local/lib/python3.10/site-packages/app.py:ro \
+    -v $PWD/nums2mask:/usr/local/lib/python3.10/site-packages/nums2mask:ro \
     -v $PWD/in:/incoming:ro -v $PWD/out:/outgoing:rw -w /outgoing \
-    localhost/fnndsc/pl-appname commandname /incoming /outgoing
+    localhost/fnndsc/pl-nums2mask nums2mask -w 1,160 /incoming /outgoing
 ```
