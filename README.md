@@ -2,7 +2,7 @@
 
 [![Version](https://img.shields.io/docker/v/fnndsc/pl-nums2mask?sort=semver)](https://hub.docker.com/r/fnndsc/pl-nums2mask)
 [![MIT License](https://img.shields.io/github/license/fnndsc/pl-nums2mask)](https://github.com/FNNDSC/pl-nums2mask/blob/main/LICENSE)
-[![Build](https://github.com/FNNDSC/pl-nums2mask/actions/workflows/ci.yml/badge.svg)](https://github.com/FNNDSC/pl-nums2mask/actions)
+[![Build](https://github.com/FNNDSC/pl-nums2mask/actions/workflows/build.yml/badge.svg)](https://github.com/FNNDSC/pl-nums2mask/actions)
 
 Obtain a mask from selected labels of a segmentation volume.
 

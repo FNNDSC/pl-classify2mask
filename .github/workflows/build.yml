@@ -1,7 +1,7 @@
 # Automatically build multi-architectural tagged container images and push them to DockerHub
 # https://github.com/FNNDSC/cookiecutter-chrisapp/wiki/Automatic-Builds
 
-name: ci
+name: build
 
 on:
   push:
