@@ -9,7 +9,7 @@ Obtain a mask from selected labels of a segmentation volume.
 ## Usage
 
 ```shell
-singularity exec docker://fnndsc/pl-nums2mask nums2mask [-p PATTERN] [-w --values] input/ output/
+apptainer exec docker://fnndsc/pl-nums2mask nums2mask [-p PATTERN] [-w --values] input/ output/
 ```
 
 `input/` is a directory which contains segmentations as MINC files.
@@ -21,7 +21,7 @@ intensity values of 40 and white matter (WM) is indicated by 160. To create a br
 you would need to select the area indicated by the values 40 and 160.
 
 ```shell
-singularity exec docker://fndsc/pl-nums2mask nums2mask -w 40,160 input/ output/
+apptainer exec docker://fndsc/pl-nums2mask nums2mask -w 40,160 input/ output/
 ```
 
 ## Development
