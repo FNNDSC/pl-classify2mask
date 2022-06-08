@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='nums2mask',
-    version='1.0.0',
+    version='1.0.1',
     description='Create brain mask from segmentation',
     author='FNNDSC',
     author_email='dev@babyMRI.org',
