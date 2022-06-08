@@ -27,7 +27,7 @@ parser.add_argument('-p', '--pattern', default='**/*.mnc',
 def main(options: Namespace, inputdir: Path, outputdir: Path):
     prog = Nums2Mask(csv2list(options.value))
     with ThreadPoolExecutor(max_workers=len(os.sched_getaffinity(0))) as pool:
-        mapper = PathMapper(inputdir, outputdir, glob=options.pattern,
-                            suffix=options.output_suffix)
+        mapper = PathMapper.file_mapper(inputdir, outputdir, glob=options.pattern,
+                                        suffix=options.output_suffix)
         for seg, mask in mapper:
             pool.submit(prog.nums2mask, seg, mask)
