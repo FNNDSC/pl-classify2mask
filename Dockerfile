@@ -1,4 +1,4 @@
-FROM docker.io/fnndsc/mni-conda-base:civet2.1.1-python3.10.4
+FROM docker.io/fnndsc/pl-nums2mask:base-1
 
 LABEL org.opencontainers.image.authors="FNNDSC <dev@babyMRI.org>" \
       org.opencontainers.image.title="pl-nums2mask" \
@@ -6,10 +6,7 @@ LABEL org.opencontainers.image.authors="FNNDSC <dev@babyMRI.org>" \
 
 WORKDIR /usr/local/src/pl-nums2mask
 
-COPY requirements.txt .
-RUN pip install -r requirements.txt
-
 COPY . .
-RUN pip install --use-feature=in-tree-build .
+RUN pip install .
 
 CMD ["nums2mask", "--help"]

@@ -2,15 +2,14 @@ from setuptools import setup
 
 setup(
     name='nums2mask',
-    version='1.0.1',
+    version='1.0.2',
     description='Create brain mask from segmentation',
     author='FNNDSC',
     author_email='dev@babyMRI.org',
     url='https://github.com/FNNDSC/pl-nums2mask',
     packages=['nums2mask'],
-    install_requires=['chris_plugin', 'loguru'],
+    install_requires=['chris-plugin==0.2.0a1', 'loguru~=0.6.0'],
     license='MIT',
-    python_requires='>=3.10.2',
     entry_points={
         'console_scripts': [
             'nums2mask = nums2mask.app:main'
