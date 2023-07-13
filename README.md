@@ -40,15 +40,18 @@ On an input dataset containing `input/1.mnc input/2.mnc`, the outputs will be
 ### Example: Extract Multiple Masks
 
 You have a directory of input MINC segmentation files where white matter (WM) is labeled
-by 160,4 on the left, and 161,5 on the right. You want to extract left and right WM masks
+by 161,5 on the left, and 160,4 on the right\*. You want to extract left and right WM masks
 to the file names "lh.wm.mnc" and "rh.wm.mnc" respectively:
 
 ```shell
-apptainer exec docker://fndsc/pl-nums2mask nums2mask -m 'lh.wm.mnc:160,4 rh.wm.mnc:161,5' input/ output/
+apptainer exec docker://fndsc/pl-nums2mask nums2mask -m 'lh.wm.mnc:161,5 rh.wm.mnc:160,4' input/ output/
 ```
 
 On an input dataset containing `input/1.mnc input/2.mnc`, the outputs will be
 `output/1/lh.wm.mnc output/1/rh.wm.mnc output/2/lh.wm.mnc output/2/rh.wm.mnc`.
+
+\*Footnote: example label numbers come from FreeSurfer's
+[`FreeSurferColorLUT`](https://surfer.nmr.mgh.harvard.edu/fswiki/FsTutorial/AnatomicalROI/FreeSurferColorLUT).
 
 ## Development
 
