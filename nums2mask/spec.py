@@ -20,5 +20,5 @@ def _csv2list(s: str) -> list[int]:
         raise ValueError(f'{s} is not a CSV of integers')
 
 
-assert parse_mask_spec('lh.wm.mnc:160,4 rh.wm.mnc:161,5') == {'lh.wm.mnc': [160, 4], 'rh.wm.mnc': [161, 5]}
+assert parse_mask_spec('lh.wm.mnc:161,5 rh.wm.mnc:160,4') == {'lh.wm.mnc': [161, 5], 'rh.wm.mnc': [160, 4]}
 assert parse_mask_spec('161,5') == {'': [161, 5]}

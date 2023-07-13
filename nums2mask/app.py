@@ -12,7 +12,7 @@ from nums2mask.spec import parse_mask_spec
 parser = ArgumentParser(description='Create brain mask from segmentation volume')
 parser.add_argument('-m', '--mask', required=True, type=str,
                     help='List of output file names and voxel values to include,'
-                         'e.g. "wm_left.mnc:4,160 wm_right.mnc:5,161"')
+                         'e.g. "wm_left.mnc:5,161 wm_right.mnc:4,160"')
 parser.add_argument('-p', '--pattern', default='**/*.mnc',
                     help='pattern for file names to include')
 
